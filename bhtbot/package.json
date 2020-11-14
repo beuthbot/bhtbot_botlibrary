@@ -1,6 +1,6 @@
 {
-  "name": "bhtbot",
-  "version": "1.0.1",
+  "name": "@bhtbot/bhtbot",
+  "version": "1.0.0",
   "author": {
     "name": "Dennis Walz"
   },
