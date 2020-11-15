@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Gateway | bhtbot</title>
-	<meta name="description" content="Documentation for bhtbot">
+	<title>Gateway | @bhtbot/bhtbot</title>
+	<meta name="description" content="Documentation for @bhtbot/bhtbot">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">bhtbot</a>
+					<a href="../index.html" class="title">@bhtbot/bhtbot</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -84,10 +84,17 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="gateway.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="gateway.html#serviceid" class="tsd-kind-icon">service<wbr>Id</a></li>
+							</ul>
+						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="gateway.html#query" class="tsd-kind-icon">query</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="gateway.html#parseresponse" class="tsd-kind-icon">parse<wbr>Response</a></li>
 							</ul>
 						</section>
 					</div>
@@ -99,13 +106,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Gateway<span class="tsd-signature-symbol">(</span>gatewayUrl<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="gateway.html" class="tsd-signature-type">Gateway</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Gateway<span class="tsd-signature-symbol">(</span>gatewayUrl<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, serviceId<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="gateway.html" class="tsd-signature-type">Gateway</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SickRed/bhtbot_botlibrary/blob/eec9002/bhtbot/src/lib/gateway.ts#L10">lib/gateway.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/SickRed/bhtbot_botlibrary/blob/624f208/bhtbot/src/lib/gateway.ts#L7">lib/gateway.ts:7</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -113,10 +120,26 @@
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> gatewayUrl: <span class="tsd-signature-type">string</span></h5>
 								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> serviceId: <span class="tsd-signature-type">string</span></h5>
+								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="gateway.html" class="tsd-signature-type">Gateway</a></h4>
 						</li>
 					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="serviceid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> service<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">service<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;GenericBot&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/SickRed/bhtbot_botlibrary/blob/624f208/bhtbot/src/lib/gateway.ts#L7">lib/gateway.ts:7</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -131,7 +154,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SickRed/bhtbot_botlibrary/blob/eec9002/bhtbot/src/lib/gateway.ts#L15">lib/gateway.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/SickRed/bhtbot_botlibrary/blob/624f208/bhtbot/src/lib/gateway.ts#L15">lib/gateway.ts:15</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -141,6 +164,29 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="botresponse.html" class="tsd-signature-type">BotResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="parseresponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> parse<wbr>Response</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Response<span class="tsd-signature-symbol">(</span>jsonResponse<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="botresponse.html" class="tsd-signature-type">BotResponse</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/SickRed/bhtbot_botlibrary/blob/624f208/bhtbot/src/lib/gateway.ts#L21">lib/gateway.ts:21</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> jsonResponse: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="botresponse.html" class="tsd-signature-type">BotResponse</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -179,16 +225,19 @@
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
 								<a href="gateway.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="gateway.html#serviceid" class="tsd-kind-icon">service<wbr>Id</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="gateway.html#query" class="tsd-kind-icon">query</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+								<a href="gateway.html#parseresponse" class="tsd-kind-icon">parse<wbr>Response</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-function">
-						<a href="../globals.html#parseresponse" class="tsd-kind-icon">parse<wbr>Response</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
@@ -202,6 +251,12 @@
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
 			</ul>
 		</div>
 	</div>
