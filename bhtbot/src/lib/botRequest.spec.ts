@@ -40,6 +40,7 @@ test('botrequest from setters', (t) => {
   const req = new BotRequest({
     text: 'wrongMESSAGE',
   });
+  const compositeUsername = testUserId + '@' + testServiceId;
 
   req
     .setText(testMessage)
@@ -49,6 +50,8 @@ test('botrequest from setters', (t) => {
     .setUserTime(testTime);
   assertRequestEqualsTest(t, req);
 
-  req.setUserId(testUserId + '@' + testServiceId);
+  t.assert(req.userId === compositeUsername);
+
+  req.setUserId(compositeUsername);
   assertRequestEqualsTest(t, req);
 });
