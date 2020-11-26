@@ -41,6 +41,26 @@ queryBot(333, 'Wie wird das Wetter morgen?').then(response=>{
 
 ## Contribution
 
+### Lint
 
-#### Credits 
+... TODO
+
+### Build
+
+... TODO
+
+### Test
+
+... TODO
+
+### Versioning
+
+... TODO
+
+### Deployment
+
+... TODO
+
+### Credits 
 Credits to Bitjson for providing a mature Typescript starter template https://github.com/bitjson/typescript-starter
+Initial Work by Dennis Walz
