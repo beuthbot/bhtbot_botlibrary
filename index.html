@@ -67,7 +67,68 @@
 				<a href="#bht-chat-bot-library" id="bht-chat-bot-library" style="color: inherit; text-decoration: none;">
 					<h1>BHT Chat-Bot Library</h1>
 				</a>
-				<p>Chatbot Library for BHT Bot</p>
+				<a href="#purpose" id="purpose" style="color: inherit; text-decoration: none;">
+					<h2>Purpose</h2>
+				</a>
+				<p>This library is meant to kickstart new BHT-Bot Chat-Client Applications (and reduce redundancy ofc)</p>
+				<p>You can setup a new Client in just a few lines of code. All you have to care about is the implementation of your specific Chat-Protocol, while Gateway Communication and Types are offered by the library.</p>
+				<p>The library contains CommonJS and ES-Modules bundles.</p>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h3>Install</h3>
+				</a>
+				<p>Add to your script like you typically do</p>
+				<pre><code><span class="hljs-built_in">npm</span> i @bhtbot/bhtbot
+ <span class="hljs-comment"># or</span>
+yarn add @bhtbot/bhtbot</code></pre>
+				<a href="#example-request" id="example-request" style="color: inherit; text-decoration: none;">
+					<h3>Example Request</h3>
+				</a>
+				<pre><code><span class="hljs-keyword">import</span> BHTBot <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@bhtbot/bhtbot&#x27;</span>;
+<span class="hljs-keyword">const</span> {Gateway, BotRequest} = BHTBot;
+<span class="hljs-keyword">const</span> bot = <span class="hljs-keyword">new</span> Gateway(<span class="hljs-string">&#x27;http://localhost:3000&#x27;</span>, <span class="hljs-string">&#x27;nameOfService&#x27;</span>);
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">queryBot</span>(<span class="hljs-params">userId, message</span>)</span>{
+    <span class="hljs-keyword">const</span> message = <span class="hljs-keyword">new</span> BotRequest({
+        <span class="hljs-attr">text</span>: message,
+        <span class="hljs-attr">serviceUserId</span>: userId,
+    });
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> bot.query(message);
+}
+
+queryBot(<span class="hljs-number">333</span>, <span class="hljs-string">&#x27;Wie wird das Wetter morgen?&#x27;</span>).then(<span class="hljs-function"><span class="hljs-params">response</span>=&gt;</span>{
+    <span class="hljs-built_in">console</span>.log(response);
+});</code></pre>
+				<a href="#contribution" id="contribution" style="color: inherit; text-decoration: none;">
+					<h2>Contribution</h2>
+				</a>
+				<a href="#lint" id="lint" style="color: inherit; text-decoration: none;">
+					<h3>Lint</h3>
+				</a>
+				<p>... TODO</p>
+				<a href="#build" id="build" style="color: inherit; text-decoration: none;">
+					<h3>Build</h3>
+				</a>
+				<p>... TODO</p>
+				<a href="#test" id="test" style="color: inherit; text-decoration: none;">
+					<h3>Test</h3>
+				</a>
+				<p>... TODO</p>
+				<a href="#versioning" id="versioning" style="color: inherit; text-decoration: none;">
+					<h3>Versioning</h3>
+				</a>
+				<p>... TODO</p>
+				<a href="#deployment" id="deployment" style="color: inherit; text-decoration: none;">
+					<h3>Deployment</h3>
+				</a>
+				<p>... TODO</p>
+				<a href="#credits" id="credits" style="color: inherit; text-decoration: none;">
+					<h3>Credits</h3>
+				</a>
+				<p>Credits to Bitjson for providing a mature Typescript starter template <a href="https://github.com/bitjson/typescript-starter">https://github.com/bitjson/typescript-starter</a>
+				Initial Work by Dennis Walz</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
