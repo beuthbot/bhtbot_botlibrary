@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/beuthbotlibrary.iml" filepath="$PROJECT_DIR$/.idea/beuthbotlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/bhtbot_botlibrary.iml" filepath="$PROJECT_DIR$/.idea/bhtbot_botlibrary.iml" />
     </modules>
   </component>
 </project>
