@@ -8,7 +8,7 @@ export default class Gateway {
 
   constructor(gatewayUrl?: string, serviceId?: string) {
     axios.defaults.baseURL = gatewayUrl || 'http://localhost:3000';
-    this.serviceId = serviceId ?? this.serviceId;
+    this.serviceId = serviceId ? serviceId : this.serviceId;
     BotRequest.serviceId = this.serviceId;
   }
 
