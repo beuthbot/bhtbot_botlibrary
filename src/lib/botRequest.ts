@@ -19,7 +19,7 @@ export default class BotRequest {
   }
 
   computeValues(serviceId?: string) {
-    serviceId = serviceId ?? BotRequest.serviceId;
+    serviceId = serviceId ? serviceId : BotRequest.serviceId;
     this.payload.serviceName = serviceId;
   }
 
