@@ -25,7 +25,7 @@ export class WebSocketConnector {
     return this;
   }
   onMessage(func: (message: ServiceMessage) => void) {
-    this.handlers.file = func;
+    this.handlers.message = func;
     return this;
   }
   onFile(func: (message: ServiceMessage) => void) {
