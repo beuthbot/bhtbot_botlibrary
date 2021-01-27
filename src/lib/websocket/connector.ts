@@ -4,6 +4,7 @@ import { ErrorMessage } from './payloads/ErrorMessage';
 import { RegisterClientAtService } from './payloads/PayloadType';
 import { RegisterClient } from './payloads/RegisterClient';
 import { ServiceMessage } from './payloads/ServiceMessage';
+import {FileMessage} from "./payloads/FileMessage";
 
 export class WebSocketConnector {
   private ws: WebSocket;
@@ -28,7 +29,7 @@ export class WebSocketConnector {
     this.handlers.message = func;
     return this;
   }
-  onFile(func: (message: ServiceMessage) => void) {
+  onFile(func: (message: FileMessage) => void) {
     this.handlers.file = func;
     return this;
   }
@@ -118,6 +119,16 @@ export class WebSocketConnector {
             this.handlers.message(jsonObj);
           } else {
             console.log('UNHANDLED MESSAGE', jsonObj);
+          }
+          return;
+        }
+
+        /* handle file to client */
+        if (ServiceMessage.isMessage(jsonObj)) {
+          if (this.handlers.file) {
+            this.handlers.file(jsonObj);
+          } else {
+            console.log('UNHANDLED FILE', jsonObj);
           }
           return;
         }
