@@ -124,7 +124,7 @@ export class WebSocketConnector {
         }
 
         /* handle file to client */
-        if (ServiceMessage.isMessage(jsonObj)) {
+        if (FileMessage.isFile(jsonObj)) {
           if (this.handlers.file) {
             this.handlers.file(jsonObj);
           } else {
