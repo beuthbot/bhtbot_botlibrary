@@ -21,3 +21,30 @@ test('apiquery', async (t) => {
     'Answer contains content'
   );
 });
+
+test('websocket', async (t) => {
+  try {
+    const sock = await bot.connectWebSocket();
+    // console.log(sock);
+
+    sock
+      .onMessage((message) => {
+        console.log('socket message', message);
+      })
+      .onError((error) => {
+        console.log('socket error', error);
+        t.assert(false, 'No errors should be received');
+      })
+      .onFile((file) => {
+        console.log('socket file', file);
+      });
+
+    //keep open for some time
+    await new Promise((resolve) => {
+      setTimeout(resolve, 1000 * 5);
+      t.pass('websocket was up without errors');
+    });
+  } catch (e) {
+    console.log('exception in test', e);
+  }
+});
