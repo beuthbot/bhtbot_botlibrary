@@ -1,10 +1,10 @@
 import WebSocket from 'ws';
 
 import { ErrorMessage } from './payloads/ErrorMessage';
+import { FileMessage } from './payloads/FileMessage';
 import { RegisterClientAtService } from './payloads/PayloadType';
 import { RegisterClient } from './payloads/RegisterClient';
 import { ServiceMessage } from './payloads/ServiceMessage';
-import {FileMessage} from "./payloads/FileMessage";
 
 export class WebSocketConnector {
   private ws: WebSocket;

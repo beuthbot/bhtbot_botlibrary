@@ -5,6 +5,12 @@ export class FileMessage {
   binary: Buffer;
 
   static isFile(obj: any) {
-    return obj && obj.type === FileMessage.type && obj.fileName && obj.userId && obj.binary;
+    return (
+      obj &&
+      obj.type === FileMessage.type &&
+      obj.fileName &&
+      obj.userId &&
+      obj.binary
+    );
   }
 }
