@@ -154,4 +154,8 @@ export class WebSocketConnector {
   private send(type: 'reg_client' | 'client_message', params: any) {
     this.ws.send(JSON.stringify(Object.assign({ type }, params)));
   }
+
+  isClosed() {
+    return this.closing || !this.ws || this.ws.readyState == this.ws.CLOSED || this.ws.readyState == this.ws.CLOSING;
+  }
 }

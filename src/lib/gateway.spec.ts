@@ -42,6 +42,10 @@ test('websocket', async (t) => {
     //keep open for some time
     await new Promise((resolve) => {
       setTimeout(resolve, 1000 * 5);
+      t.assert(!sock.isClosed());
+      sock.close();
+      t.assert(sock.isClosed());
+
       t.pass('websocket was up without errors');
     });
   } catch (e) {
