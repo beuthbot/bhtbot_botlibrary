@@ -3,7 +3,7 @@ import test from 'ava';
 import BotRequest from './botRequest';
 import BotResponse from './botResponse';
 import Gateway from './gateway';
-const bot = new Gateway('https://beuthbot.ziemers.de');
+const bot = new Gateway();
 
 test('apiquery', async (t) => {
   const response = await bot.query(
