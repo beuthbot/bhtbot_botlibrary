@@ -32,7 +32,7 @@ export default class Gateway {
 
   readonly queryAudio = async (fileStream, fileName, mimeType): Promise<BotResponse> => {
     return new Promise((resolve, reject) => {
-      const req = request.post('http://localhost:3000/audio', function (err, _resp, body) {
+      const req = request.post(axios.defaults.baseURL + '/audio', function (err, _resp, body) {
         if (err) {
           reject(err);
         } else {
