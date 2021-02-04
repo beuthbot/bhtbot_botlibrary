@@ -1,4 +1,5 @@
 import axios from 'axios';
+import request from 'request';
 
 import BotRequest from './botRequest';
 import BotResponse from './botResponse';
@@ -28,6 +29,43 @@ export default class Gateway {
     const response = await axios.post('/message', message.payload);
     return Gateway.parseResponse(response.data);
   };
+
+  readonly queryAudio = async (fileStream, fileName, mimeType): Promise<BotResponse> => {
+    return new Promise((resolve, reject) => {
+      const req = request.post('http://localhost:3000/audio', function (err, _resp, body) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(body);
+        }
+      });
+      const form = req.form();
+      form.append('file', fileStream, {
+        filename: fileName,
+        contentType: mimeType
+      });
+    })
+  };
+
+
+
+  // readonly queryAudio = async (fileStream, fileName, mimeType){
+
+
+    // request.post('http://localhost:3000/audio', function (err, resp, body) {
+  //     if (err) {
+  //       console.log('Error!');
+  //     } else {
+  //       console.log('URL: ' + body);
+  //     }
+  //   });
+  //   var form = req.form();
+  //   form.append('file', fileStream, {
+  //   filename: fileName,
+  //   contentType: mimeType
+  // });
+  // }
+
 
   private static parseResponse(jsonResponse?: string): BotResponse {
     return Object.assign(new BotResponse(), jsonResponse);
