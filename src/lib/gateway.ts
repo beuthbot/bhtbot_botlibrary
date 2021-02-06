@@ -19,7 +19,7 @@ export default class Gateway {
     const url = axios.defaults.baseURL
       .replace('http://', '')
       .replace('https://', '');
-    this.websocketConnector = new WebSocketConnector('discord');
+    this.websocketConnector = new WebSocketConnector(this.serviceId);
     await this.websocketConnector.connect(url);
     return this.websocketConnector;
   };
