@@ -15,8 +15,8 @@ export default class Gateway {
     BotRequest.serviceId = this.serviceId;
   }
 
-  connectWebSocket = async () => {
-    const url = axios.defaults.baseURL
+  connectWebSocket = async (url?: string) => {
+    url = (url ? url : axios.defaults.baseURL)
       .replace('http://', '')
       .replace('https://', '');
     this.websocketConnector = new WebSocketConnector(this.serviceId);
@@ -30,42 +30,29 @@ export default class Gateway {
     return Gateway.parseResponse(response.data);
   };
 
-  readonly queryAudio = async (fileStream, fileName, mimeType): Promise<BotResponse> => {
+  readonly queryAudio = async (
+    fileStream,
+    fileName,
+    mimeType
+  ): Promise<BotResponse> => {
     return new Promise((resolve, reject) => {
-      const req = request.post(axios.defaults.baseURL + '/audio', function (err, _resp, body) {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(body);
+      const req = request.post(
+        axios.defaults.baseURL + '/audio',
+        function (err, _resp, body) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(body);
+          }
         }
-      });
+      );
       const form = req.form();
       form.append('file', fileStream, {
         filename: fileName,
-        contentType: mimeType
+        contentType: mimeType,
       });
-    })
+    });
   };
-
-
-
-  // readonly queryAudio = async (fileStream, fileName, mimeType){
-
-
-    // request.post('http://localhost:3000/audio', function (err, resp, body) {
-  //     if (err) {
-  //       console.log('Error!');
-  //     } else {
-  //       console.log('URL: ' + body);
-  //     }
-  //   });
-  //   var form = req.form();
-  //   form.append('file', fileStream, {
-  //   filename: fileName,
-  //   contentType: mimeType
-  // });
-  // }
-
 
   private static parseResponse(jsonResponse?: string): BotResponse {
     return Object.assign(new BotResponse(), jsonResponse);

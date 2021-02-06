@@ -156,6 +156,11 @@ export class WebSocketConnector {
   }
 
   isClosed() {
-    return this.closing || !this.ws || this.ws.readyState == this.ws.CLOSED || this.ws.readyState == this.ws.CLOSING;
+    return (
+      this.closing ||
+      !this.ws ||
+      this.ws.readyState == this.ws.CLOSED ||
+      this.ws.readyState == this.ws.CLOSING
+    );
   }
 }

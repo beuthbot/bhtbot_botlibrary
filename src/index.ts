@@ -7,4 +7,13 @@ import { WebSocketConnector } from './lib/websocket/connector';
 import { FileMessage } from './lib/websocket/payloads/FileMessage';
 import { ServiceMessage } from './lib/websocket/payloads/ServiceMessage';
 
-export { Gateway, BotRequest, BotResponse, BotUser, BotIntent, WebSocketConnector, ServiceMessage, FileMessage };
+export {
+  Gateway,
+  BotRequest,
+  BotResponse,
+  BotUser,
+  BotIntent,
+  WebSocketConnector,
+  ServiceMessage,
+  FileMessage,
+};
