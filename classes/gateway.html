@@ -84,16 +84,19 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="gateway.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="gateway.html#serviceid" class="tsd-kind-icon">service<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="gateway.html#websocketconnector" class="tsd-kind-icon">websocket<wbr>Connector</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="gateway.html#connectwebsocket" class="tsd-kind-icon">connect<wbr>Web<wbr>Socket</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="gateway.html#query" class="tsd-kind-icon">query</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="gateway.html#queryaudio" class="tsd-kind-icon">query<wbr>Audio</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="gateway.html#parseresponse" class="tsd-kind-icon">parse<wbr>Response</a></li>
 							</ul>
 						</section>
@@ -112,7 +115,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/beuthbot/bhtbot_botlibrary/blob/d6a3448/src/lib/gateway.ts#L7">lib/gateway.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/beuthbot/bhtbot_botlibrary/blob/14a1a41/src/lib/gateway.ts#L10">lib/gateway.ts:10</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -129,7 +132,7 @@
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="serviceid" class="tsd-anchor"></a>
@@ -137,13 +140,40 @@
 					<div class="tsd-signature tsd-kind-icon">service<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;GenericBot&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/beuthbot/bhtbot_botlibrary/blob/d6a3448/src/lib/gateway.ts#L7">lib/gateway.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/beuthbot/bhtbot_botlibrary/blob/14a1a41/src/lib/gateway.ts#L9">lib/gateway.ts:9</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="websocketconnector" class="tsd-anchor"></a>
+					<h3>websocket<wbr>Connector</h3>
+					<div class="tsd-signature tsd-kind-icon">websocket<wbr>Connector<span class="tsd-signature-symbol">:</span> <a href="websocketconnector.html" class="tsd-signature-type">WebSocketConnector</a><span class="tsd-signature-symbol"> = null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/beuthbot/bhtbot_botlibrary/blob/14a1a41/src/lib/gateway.ts#L10">lib/gateway.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="connectwebsocket" class="tsd-anchor"></a>
+					<h3>connect<wbr>Web<wbr>Socket</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">connect<wbr>Web<wbr>Socket<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="websocketconnector.html" class="tsd-signature-type">WebSocketConnector</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/beuthbot/bhtbot_botlibrary/blob/14a1a41/src/lib/gateway.ts#L18">lib/gateway.ts:18</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="websocketconnector.html" class="tsd-signature-type">WebSocketConnector</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="query" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> query</h3>
@@ -154,13 +184,42 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/beuthbot/bhtbot_botlibrary/blob/d6a3448/src/lib/gateway.ts#L15">lib/gateway.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/beuthbot/bhtbot_botlibrary/blob/14a1a41/src/lib/gateway.ts#L27">lib/gateway.ts:27</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>message: <a href="botrequest.html" class="tsd-signature-type">BotRequest</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="botresponse.html" class="tsd-signature-type">BotResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="queryaudio" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> query<wbr>Audio</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">query<wbr>Audio<span class="tsd-signature-symbol">(</span>fileStream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, fileName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, mimeType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="botresponse.html" class="tsd-signature-type">BotResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/beuthbot/bhtbot_botlibrary/blob/14a1a41/src/lib/gateway.ts#L33">lib/gateway.ts:33</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>fileStream: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>fileName: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>mimeType: <span class="tsd-signature-type">any</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="botresponse.html" class="tsd-signature-type">BotResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -177,7 +236,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/beuthbot/bhtbot_botlibrary/blob/d6a3448/src/lib/gateway.ts#L21">lib/gateway.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/beuthbot/bhtbot_botlibrary/blob/14a1a41/src/lib/gateway.ts#L70">lib/gateway.ts:70</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -217,6 +276,12 @@
 					<li class=" tsd-kind-class">
 						<a href="botuser.html" class="tsd-kind-icon">Bot<wbr>User</a>
 					</li>
+					<li class=" tsd-kind-class">
+						<a href="errormessage.html" class="tsd-kind-icon">Error<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="filemessage.html" class="tsd-kind-icon">File<wbr>Message</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
@@ -228,8 +293,17 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="gateway.html#serviceid" class="tsd-kind-icon">service<wbr>Id</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="gateway.html#websocketconnector" class="tsd-kind-icon">websocket<wbr>Connector</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="gateway.html#connectwebsocket" class="tsd-kind-icon">connect<wbr>Web<wbr>Socket</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="gateway.html#query" class="tsd-kind-icon">query</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="gateway.html#queryaudio" class="tsd-kind-icon">query<wbr>Audio</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
 								<a href="gateway.html#parseresponse" class="tsd-kind-icon">parse<wbr>Response</a>
@@ -238,6 +312,21 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class">
+						<a href="registerclient.html" class="tsd-kind-icon">Register<wbr>Client</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="servicemessage.html" class="tsd-kind-icon">Service<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="websocketconnector.html" class="tsd-kind-icon">Web<wbr>Socket<wbr>Connector</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="../globals.html#registerclientatservice" class="tsd-kind-icon">Register<wbr>Client<wbr>AtService</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="../globals.html#servicemessagetoclient" class="tsd-kind-icon">Service<wbr>Message<wbr>ToClient</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -254,9 +343,11 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
 	</div>
