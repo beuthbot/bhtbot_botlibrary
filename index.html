@@ -70,28 +70,44 @@
 				<a href="#purpose" id="purpose" style="color: inherit; text-decoration: none;">
 					<h2>Purpose</h2>
 				</a>
-				<p>This library is meant to kickstart new BHT-Bot Chat-Client Applications (and reduce redundancy ofc)</p>
+				<p>This library is meant to kickstart new BHT-Bot Chat-Client Applications and reduce redundancy</p>
 				<p>You can setup a new Client in just a few lines of code. All you have to care about is the implementation of your specific Chat-Protocol, while Gateway Communication and Types are offered by the library.</p>
 				<p>The library contains CommonJS and ES-Modules bundles.</p>
+				<p>This Library does target NodeJS Bot Applications in first place. Some functions might break for Browser Applications or need some additional Polyfills. Feel free to open pull requests regarding any compatibility improvements.</p>
+				<a href="#get-in-touch" id="get-in-touch" style="color: inherit; text-decoration: none;">
+					<h2>Get in touch</h2>
+				</a>
+				<ul>
+					<li>A typescript implementation can be found for <a href="https://github.com/beuthbot/discord-bot">Discord Bot</a> </li>
+					<li>A legacy NodeJS Bot can be found at <a href="https://github.com/beuthbot/telegram-bot">Telegram Bot</a></li>
+					<li>Some Features can be seen in <a href="./src/lib/gateway.spec.ts">Test Cases</a></li>
+					<li>Generated technical documentation can be found at: <a href="https://beuthbot.github.io/bhtbot_botlibrary/">https://beuthbot.github.io/bhtbot_botlibrary/</a></li>
+				</ul>
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h2>Usage</h2>
 				</a>
 				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
 					<h3>Install</h3>
 				</a>
-				<p>Add to your script like you typically do</p>
+				<p>Add to your projects dependencies like you typically do</p>
 				<pre><code><span class="hljs-built_in">npm</span> i @bhtbot/bhtbot
  <span class="hljs-comment"># or</span>
 yarn add @bhtbot/bhtbot
 </code></pre>
-				<a href="#example-request" id="example-request" style="color: inherit; text-decoration: none;">
-					<h3>Example Request</h3>
+				<a href="#init" id="init" style="color: inherit; text-decoration: none;">
+					<h3>Init</h3>
 				</a>
+				<p>On instantiating the Gateway Connection you need to pass url + name of the service.
+				The name of service will be passed to the gateway for uniquely identifying your users. Every Bot Client must use a unique service Id for this purpose.</p>
 				<pre><code><span class="hljs-keyword">import</span> BHTBot <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@bhtbot/bhtbot&#x27;</span>;
 <span class="hljs-keyword">const</span> {Gateway, BotRequest} = BHTBot;
 <span class="hljs-keyword">const</span> bot = <span class="hljs-keyword">new</span> Gateway(<span class="hljs-string">&#x27;http://localhost:3000&#x27;</span>, <span class="hljs-string">&#x27;nameOfService&#x27;</span>);
-
-<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">queryBot</span>(<span class="hljs-params">userId, message</span>)</span>{
+</code></pre>
+				<a href="#example-basic-request" id="example-basic-request" style="color: inherit; text-decoration: none;">
+					<h3>Example Basic Request</h3>
+				</a>
+				<p>Basic Communication with the BHT Bot Gateway is done by calling it with a POST request. You can call the gateway by building a BotRequest instance and passing it to the gateway.</p>
+				<pre><code><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">queryBot</span>(<span class="hljs-params">userId, message</span>)</span>{
     <span class="hljs-keyword">const</span> message = <span class="hljs-keyword">new</span> BotRequest({
         <span class="hljs-attr">text</span>: message,
         <span class="hljs-attr">serviceUserId</span>: userId,
@@ -99,38 +115,94 @@ yarn add @bhtbot/bhtbot
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> bot.query(message);
 }
 
-queryBot(<span class="hljs-number">333</span>, <span class="hljs-string">&#x27;Wie wird das Wetter morgen?&#x27;</span>).then(<span class="hljs-function"><span class="hljs-params">response</span>=&gt;</span>{
-    <span class="hljs-built_in">console</span>.log(response);
-});
+<span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> queryBot(<span class="hljs-number">333</span>, <span class="hljs-string">&#x27;Wie wird das Wetter morgen?&#x27;</span>);
+<span class="hljs-built_in">console</span>.log(response);
+</code></pre>
+				<a href="#websocket-connection" id="websocket-connection" style="color: inherit; text-decoration: none;">
+					<h3>Websocket Connection</h3>
+				</a>
+				<p>Some features of BHT-Bot are performed asynchronously, which requires the Chat Bot Service to be callable at any time.
+				This is implemented by having a Websocket connection to the gateway, listening for those events.</p>
+				<p>Your Chatbot will be registered with the serviceId given at initializing the Gateway - it must be unique, otherwise you will be disconnected.</p>
+				<pre><code><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">configureSocket</span>(<span class="hljs-params">gateway: Gateway</span>) </span>{
+    <span class="hljs-keyword">const</span> sock = <span class="hljs-keyword">await</span> gateway.connectWebSocket()
+
+    sock.onMessage(<span class="hljs-keyword">async</span> request =&gt; {
+        <span class="hljs-keyword">const</span> {userId, message} = request;
+        <span class="hljs-comment">//todo send message to client with user-id == userId</span>
+    })
+
+    sock.onFile(<span class="hljs-keyword">async</span> file=&gt;{
+        <span class="hljs-keyword">const</span> {binary, userId, fileName} = file;
+        <span class="hljs-comment">//todo send file to client with user-id == userId</span>
+    })
+}
+
+configureSocket(bot);
 </code></pre>
 				<a href="#contribution" id="contribution" style="color: inherit; text-decoration: none;">
 					<h2>Contribution</h2>
 				</a>
-				<a href="#lint" id="lint" style="color: inherit; text-decoration: none;">
-					<h3>Lint</h3>
+				<p>Since this is a university project which will be passed to new students every semester with their own philosophies and goals, this framework is subject of heavy (breaking) changes.</p>
+				<p>To keep everybody in sync, any rules and changes made to the project must be visible within this repository.</p>
+				<p>All rules and pipelines must be implemented as a script withing <a href="./package.json">package.json</a></p>
+				<a href="#building" id="building" style="color: inherit; text-decoration: none;">
+					<h3>Building</h3>
 				</a>
-				<p>... TODO</p>
-				<a href="#build" id="build" style="color: inherit; text-decoration: none;">
-					<h3>Build</h3>
+				<p>For development you can use convenient watchers that will rebuild on file change</p>
+				<pre><code><span class="hljs-meta">$</span><span class="bash"> npm watch:build</span>
+<span class="hljs-meta">$</span><span class="bash"> npm watch:<span class="hljs-built_in">test</span></span>
+</code></pre>
+				<p>Release builds are triggered by</p>
+				<pre><code><span class="hljs-variable">$ </span>npm <span class="hljs-symbol">build:</span>main
+<span class="hljs-variable">$ </span>npm <span class="hljs-symbol">build:</span><span class="hljs-class"><span class="hljs-keyword">module</span></span>
+</code></pre>
+				<a href="#lint-amp-beautify" id="lint-amp-beautify" style="color: inherit; text-decoration: none;">
+					<h3>Lint &amp; beautify</h3>
 				</a>
-				<p>... TODO</p>
+				<p>Some code cleanup is done by <code>fix</code> scripts and validated by <code>test</code> scripts</p>
+				<pre><code><span class="hljs-variable">$npm</span> <span class="hljs-builtin-name">run</span> fix:prettier
+<span class="hljs-variable">$npm</span> <span class="hljs-builtin-name">run</span> fix:lint
+<span class="hljs-variable">$npm</span> <span class="hljs-builtin-name">run</span> test:prettier
+<span class="hljs-variable">$npm</span> <span class="hljs-builtin-name">run</span> test:lint
+<span class="hljs-variable">$npm</span> <span class="hljs-builtin-name">run</span> test:spelling
+</code></pre>
 				<a href="#test" id="test" style="color: inherit; text-decoration: none;">
 					<h3>Test</h3>
 				</a>
-				<p>... TODO</p>
-				<a href="#versioning" id="versioning" style="color: inherit; text-decoration: none;">
-					<h3>Versioning</h3>
+				<p>There are unit tests as well as coverage checks</p>
+				<pre><code>$ npm <span class="hljs-keyword">run</span><span class="bash"> <span class="hljs-built_in">test</span>: unit</span>
+$ npm <span class="hljs-keyword">run</span><span class="bash"> cov</span>
+</code></pre>
+				<a href="#releasing" id="releasing" style="color: inherit; text-decoration: none;">
+					<h3>Releasing</h3>
 				</a>
-				<p>... TODO</p>
 				<a href="#deployment" id="deployment" style="color: inherit; text-decoration: none;">
-					<h3>Deployment</h3>
+					<h4>Deployment</h4>
 				</a>
-				<p>... TODO</p>
+				<p>The final release script combines all the steps into a single pipeline which also heightens the build version in package.json and commits the version as a tag for the repository.</p>
+				<p>This will also generate the docs with <code>npm run doc</code> which will be published to <a href="https://beuthbot.github.io/bhtbot_serviceframework">github pages</a></p>
+				<pre><code>$ <span class="hljs-comment"># npm run reset-hard # BEWARE: this will clear your working tree. make sure every changes you want to publish are commited</span>
+$ npm <span class="hljs-keyword">run</span><span class="bash"> prepare-release</span>
+</code></pre>
+				<a href="#publishing" id="publishing" style="color: inherit; text-decoration: none;">
+					<h4>Publishing</h4>
+				</a>
+				<p>After the build pipeline is finished, you will be provided with information about how to publish, which essentially means pushing your code to the git repository and publishing the build to npmjs</p>
+				<pre><code><span class="hljs-variable">$ </span>git push --tags
+<span class="hljs-variable">$ </span>npm publish
+</code></pre>
+				<a href="#versioning--changelog" id="versioning--changelog" style="color: inherit; text-decoration: none;">
+					<h4>Versioning / Changelog</h4>
+				</a>
+				<p>The Patch-Versioning is done automagically by the prepare-release script.
+					Feature and Major releases can be set manually or with help of <code>npm run standard-version</code>
+				You should also consider adding notes to the <a href="./CHANGELOG.md">CHANGELOG.md</a></p>
 				<a href="#credits" id="credits" style="color: inherit; text-decoration: none;">
 					<h3>Credits</h3>
 				</a>
-				<p>Credits to Bitjson for providing a mature Typescript starter template <a href="https://github.com/bitjson/typescript-starter">https://github.com/bitjson/typescript-starter</a>
-				Initial Work by Dennis Walz</p>
+				<p>Credits to Bitjson for providing a mature Typescript starter template <a href="https://github.com/bitjson/typescript-starter">https://github.com/bitjson/typescript-starter</a></p>
+				<p>Initial Work by Dennis Walz</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
