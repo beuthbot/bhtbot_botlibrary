@@ -7,6 +7,7 @@ export default class BotResponse {
   readonly answer?: {
     readonly history: readonly string[];
     readonly content: string;
+    readonly error?: string;
   };
   readonly intent?: Intent;
   readonly entities: readonly [];
