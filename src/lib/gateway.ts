@@ -3,6 +3,7 @@ import request from 'request';
 
 import BotRequest from './botRequest';
 import BotResponse from './botResponse';
+import FileRequest from './fileRequest';
 import { WebSocketConnector } from './websocket/connector';
 
 export default class Gateway {
@@ -31,9 +32,7 @@ export default class Gateway {
   };
 
   readonly queryAudio = async (
-    fileStream,
-    fileName,
-    mimeType
+    fileRequest: FileRequest
   ): Promise<BotResponse> => {
     return new Promise((resolve, reject) => {
       const req = request.post(
@@ -47,9 +46,14 @@ export default class Gateway {
         }
       );
       const form = req.form();
-      form.append('file', fileStream, {
-        filename: fileName,
-        contentType: mimeType,
+      form.append('file', fileRequest.fileStream, {
+        filename: fileRequest.fileName,
+        contentType: fileRequest.mimeType,
+      });
+      Object.keys(fileRequest.payload).forEach((key) => {
+        if (fileRequest.payload[key]) {
+          form.append(key, fileRequest.payload[key]);
+        }
       });
     });
   };
