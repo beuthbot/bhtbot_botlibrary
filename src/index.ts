@@ -21,5 +21,5 @@ export {
   FileMessage,
   FileRequest,
   FileRequestPayload,
-  BotRequestPayload
+  BotRequestPayload,
 };
